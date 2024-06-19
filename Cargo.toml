@@ -1,0 +1,16 @@
+[package]
+name = "start_app"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "start_app"
+path = "src/lib.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = "1.0.203"
+serde_json = "1.0.117"
+serde_derive = "1.0.203"
+simple_crypt = "0.2.3"
