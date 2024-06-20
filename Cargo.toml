@@ -1,6 +1,8 @@
 [package]
 name = "start_app"
 version = "0.1.0"
+authors = ["Marcio Oliveira da Silva <https://github.com/marcio-ods>"]
+documentation = "https://github.com/marcio-ods/start_app"
 edition = "2021"
 
 [lib]

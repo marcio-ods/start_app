@@ -1,6 +1,4 @@
 use serde_derive::{Deserialize, Serialize};
-// use serde::{Deserialize, Serialize};
-use serde_json::Value;
 use std::env;
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,21 +36,6 @@ pub fn get_args() -> Arguments {
     }
 
     if args.path.is_empty() || args.user.is_empty() || args.pwd.is_empty() {
-        args.new = false;
-    }
-    args
-}
-
-pub fn validate_args(v: Value) -> Arguments {
-    let mut args = Arguments {
-        path: "".to_string(),
-        pwd: "".to_string(),
-        user: "".to_string(),
-        new: true,
-    };
-
-    if v["path"].is_null() || v["user"].is_null() || v["pwd"].is_null() {
-        // erro
         args.new = false;
     }
     args

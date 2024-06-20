@@ -1,7 +1,5 @@
-// use std::env;
 use std::fs::File;
 use std::io::prelude::*;
-use std::io::{self, BufRead};
 use std::path::Path;
 
 const TEST_FILE: &str = "test.ps1";
@@ -67,44 +65,4 @@ pub fn read_cfg_vec8() -> Vec<u8> {
         Ok(_) => (),
     }
     vec
-}
-
-pub fn read_cfg() -> String {
-    let path = Path::new(CFG_FILE);
-    let display = path.display();
-
-    let mut file = match File::open(&path) {
-        Err(why) => {
-            let mut res = display.to_string();
-            res.push_str(&": ");
-            res.push_str(&why.to_string());
-            res.push_str(DEFAULT_LOG);
-            write_log(&res);
-            panic!("couldn't open {}: {}", display, why)
-        }
-        Ok(file) => file,
-    };
-
-    let mut s = String::new();
-
-    match file.read_to_string(&mut s) {
-        Err(why) => {
-            let mut res = display.to_string();
-            res.push_str(&": ");
-            res.push_str(&why.to_string());
-            res.push_str(DEFAULT_LOG);
-            write_log(&res);
-            panic!("couldn't open {}: {}", display, why)
-        }
-        Ok(_) => print!("{} contains:\n{}", display, s),
-    }
-    s
-}
-
-pub fn read_cfg_old() -> String {
-    let file = File::open(CFG_FILE).expect("Failed to read line");
-    let mut reader = io::BufReader::new(file);
-    let mut line = String::new();
-    reader.read_line(&mut line).expect("Failed to read line");
-    line
 }
